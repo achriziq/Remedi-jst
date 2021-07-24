@@ -35,30 +35,30 @@ bot.on('message', (msg) => {
         s = msg.text.split("|");
         model.predict(
             [
-                parseFloat(s[1]), // string to float
+                parseFloat(s[0]), // string to float
+                parseFloat(s[1]),
                 parseFloat(s[2]),
                 parseFloat(s[3]),
-                parseFloat(s[4]),
                 ]
             ).then((jres1)=>{
             console.log(jres1);
                 
-          model.predict([parseFloat(s[0]), parseFloat(s[1]), parseFloat(s[2]),parseFloat(s[3]),parseFloat(jres1[1]), parseFloat(jres1[2]), parseFloat(jres1[3]),parseFloat(jres1[4])]);
+          model.predict([parseFloat(s[0]), parseFloat(s[1]), parseFloat(s[2]),parseFloat(s[3]),parseFloat(jres1[0]), parseFloat(jres1[1]), parseFloat(jres1[4]),parseFloat(jres1[3])]);
                 bot.sendMessage(
                     msg.chat.id,
-                    `nilai Y1 yang diprediksi adalah ${jres1[1]}`
+                    `nilai Y1 yang diprediksi adalah ${jres1[0]}`
                     );
                 bot.sendMessage(
                     msg.chat.id,
-                    `nilai Y2 yang diprediksi adalah ${jres1[2]}`
+                    `nilai Y2 yang diprediksi adalah ${jres1[1]}`
                     );
                 bot.sendMessage(
                     msg.chat.id,
-                    `nilai Y3 yang diprediksi adalah ${jres1[3]}`
+                    `nilai Y3 yang diprediksi adalah ${jres1[2]}`
                      );
                 bot.sendMessage(
                     msg.chat.id,
-                    `nilai Y4 yang diprediksi adalah ${jres1[4]}`
+                    `nilai Y4 yang diprediksi adalah ${jres1[3]}`
                      );
                         
             })
